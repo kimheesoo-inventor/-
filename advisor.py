@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import ast
+import json
 import re
 import sys
 from dataclasses import dataclass
@@ -226,7 +227,29 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Code review advisor")
     ap.add_argument("paths", nargs="+", help="file(s) to review")
     ap.add_argument("--quiet", action="store_true", help="only print summary")
+    ap.add_argument("--json", dest="as_json", action="store_true",
+                    help="emit findings as JSON (suppresses text output)")
     args = ap.parse_args(argv)
+
+    if args.as_json:
+        report = {"files": [], "total": 0}
+        for p in args.paths:
+            path = Path(p)
+            if not path.is_file():
+                report["files"].append({"path": p, "error": "not a file", "findings": []})
+                continue
+            findings = review(path)
+            report["files"].append({
+                "path": str(path),
+                "findings": [
+                    {"line": f.line, "severity": f.severity, "message": f.message}
+                    for f in findings
+                ],
+            })
+            report["total"] += len(findings)
+        json.dump(report, sys.stdout, indent=2)
+        sys.stdout.write("\n")
+        return 0 if report["total"] == 0 else 1
 
     total = 0
     for p in args.paths:
