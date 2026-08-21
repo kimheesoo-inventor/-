@@ -6,3 +6,4 @@ Claude Code가 내 의도대로 일관성 있게 움직이도록 만드는 `CLAU
 - [`docs/claude-md-guide.md`](docs/claude-md-guide.md) — 무엇을 왜 적는지에 대한 작성 가이드
 - [`docs/agent-pipeline.md`](docs/agent-pipeline.md) — PM → 리서치 → 콘텐츠 → 디자인 → 검수 → RSI 파이프라인
 - [`.claude/agents/`](.claude/agents/) — 각 단계 에이전트 정의
+- [`.claude/commands/`](.claude/commands/) — 파이프라인 순서를 고정하는 슬래시 명령
