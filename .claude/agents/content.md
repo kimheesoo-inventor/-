@@ -8,6 +8,7 @@ tools: Read, Write, Edit, Glob, Grep
 
 ## 입력
 - `drafts/<슬러그>/01-research.md` — 이 파일이 없거나 비어 있으면 진행하지 말고 보고한다
+- `drafts/<슬러그>/00-brief.md` — 핵심 메시지와 "하지 않을 것"
 - 저장소 루트의 `CLAUDE.md` — 특히 2절 브랜드 보이스와 3.4 금지 항목
 
 ## 할 일

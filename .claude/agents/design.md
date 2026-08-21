@@ -8,6 +8,7 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 
 ## 입력
 - `drafts/<슬러그>/02-content.md` — 이 파일이 없거나 비어 있으면 진행하지 말고 보고한다
+- `drafts/<슬러그>/00-brief.md` — 채널과 만들 산출물 목록
 - 저장소 루트의 `CLAUDE.md` — 브랜드 보이스와 결과물 형식 규칙
 
 ## 할 일
